@@ -11,7 +11,6 @@ import (
 
 const simpleNetworkAnnotation = `[{
 	"name": "default/kindnet",
-	"interface": "eth0",
 	"ips": [
 		"10.244.0.10"
 	],

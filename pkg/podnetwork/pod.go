@@ -18,7 +18,7 @@ type status struct {
 // Network represents the link between the pod,
 // the interface name and the network attachment definition name
 type Network struct {
-	Interface   string `default:"eth0"`
+	Interface   string
 	NetworkName string
 }
 
@@ -37,7 +37,11 @@ func Get(pod *corev1.Pod) ([]Network, error) {
 
 	res := make([]Network, len(statuses))
 	for i, s := range statuses {
-		res[i].Interface = s.Interface
+		if s.Interface == "" {
+			res[i].Interface = "eth0"
+		} else {
+			res[i].Interface = s.Interface
+		}
 		res[i].NetworkName = s.Name
 	}
 	return res, nil
