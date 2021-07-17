@@ -18,7 +18,7 @@ type status struct {
 // Network represents the link between the pod,
 // the interface name and the network attachment definition name
 type Network struct {
-	Interface   string
+	Interface   string `default:"eth0"`
 	NetworkName string
 }
 
